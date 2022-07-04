@@ -1,2 +1,2 @@
-# catsters-nvim-config
-A nvim config geared towards editing Rust and Arduino code, as well as efficiency. 
+# The Catster's Neovim Config
+A neovim config geared towards editing Rust and C code, as well as LaTeX essays.
