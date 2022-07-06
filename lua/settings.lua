@@ -41,6 +41,9 @@ cmd([[autocmd BufWritepre * %s/\n\+\%$//e]])
 -- Jump to previous editing position
 cmd([[au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
 
+-- Highlight yanked
+cmd([[autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=500}]])
+
 -- Mouse support
 opt.mouse = "a"
 
@@ -58,6 +61,13 @@ opt.gdefault = true
 -- List chars are cool
 opt.listchars = "nbsp:¬,extends:»,precedes:«,trail:•"
 
+-- Colorscheme
+require("onedark").load()
+
+-- Telescope extensions
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("ui-select")
+
 -- Interface
 cmd("syntax enable")
 opt.synmaxcol = 500
@@ -73,9 +83,9 @@ opt.showcmd = true
 opt.splitbelow = true
 opt.splitright = true
 opt.title = true
-opt.winwidth = 79
+opt.winwidth = 78
 opt.updatetime = 300
-opt.timeoutlen = 300
+opt.timeoutlen = 282
 opt.guicursor = [[n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor]]
 opt.inccommand = "nosplit"
 opt.vb = true

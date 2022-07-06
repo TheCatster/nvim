@@ -29,6 +29,12 @@ keymap.set("n", "*", "*zz", { silent = true })
 keymap.set("n", "#", "#zz", { silent = true })
 keymap.set("n", "g*", "g*zz", { silent = true })
 
+-- Fuzzy search to open file
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
+keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
+keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
+
 -- Better search
 keymap.set("n", "S", ":%s//g<Left><Left>")
 keymap.set("n", "?", "?\\v")
