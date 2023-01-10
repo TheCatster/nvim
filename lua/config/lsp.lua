@@ -1,5 +1,14 @@
-require('nvim-lsp-setup').setup({
+require('lsp-setup').setup({
   default_mappings = true,
+  -- Global on_attach
+  on_attach = function(client, bufnr)
+      -- Support custom the on_attach function for global
+      -- Formatting on save as default
+      require('lsp-setup.utils').format_on_save(client)
+  end,
+  -- Global capabilities
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
+  -- Configuration of LSP servers
   servers = {
     arduino_language_server = {},
     clangd = {},
@@ -23,10 +32,9 @@ require('nvim-lsp-setup').setup({
     lemminx = {},
     yamlls = {},
     zls = {},
-    sourcekit = {},
     taplo = {},
     tailwindcss = {},
-    rust_analyzer = require('nvim-lsp-setup.rust-tools').setup({
+    rust_analyzer = require('lsp-setup.rust-tools').setup({
       server = {
         settings = {
           ['rust-analyzer'] = {

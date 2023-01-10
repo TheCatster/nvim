@@ -73,13 +73,16 @@ cmd("syntax enable")
 opt.synmaxcol = 500
 opt.cmdheight = 2
 opt.cursorline = true
-opt.foldmethod = "manual"
+opt.foldmethod = "marker"
 opt.lazyredraw = true
+opt.showmode = false
+opt.ruler = true
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 5
 opt.scrolloff = 2
 opt.showcmd = true
+opt.hlsearch = false
 opt.splitbelow = true
 opt.splitright = true
 opt.title = true
@@ -112,6 +115,8 @@ opt.diffopt:append({ "indent-heuristic" })
 
 -- Wrapping
 bo.formatoptions = "tcrqnb"
+opt.wrap = true
+opt.linebreak = true
 
 -- System clipboard
 opt.clipboard = opt.clipboard + "unnamedplus"
@@ -124,7 +129,7 @@ opt.hidden = true
 opt.printfont = ":h10"
 opt.printencoding = "utf-8"
 opt.printoptions = "paper:letter"
-opt.signcolumn = "yes"
+opt.signcolumn = "no"
 
 -- Backups and Undos
 opt.backup = true
@@ -145,3 +150,6 @@ opt.wildignore:append({ '*.sw?' })
 opt.wildignore:append({ '*.DS_Store' })
 opt.wildignore:append({ '*/tmp/**' })
 opt.wildignore:append({ "*.o", "*.hi" })
+
+-- Python
+g.python3_host_prog = "/Users/danya/.pyenv/shims/python"

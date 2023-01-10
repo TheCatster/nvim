@@ -151,10 +151,11 @@ return require("packer").startup(
 
     -- LSP
     use {
-      "junnplus/nvim-lsp-setup",
+      "junnplus/lsp-setup.nvim",
       requires = {
         "neovim/nvim-lspconfig",
-        "williamboman/nvim-lsp-installer",
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
         "glepnir/lspsaga.nvim"
       }
     }
@@ -170,21 +171,6 @@ return require("packer").startup(
     use "hrsh7th/cmp-nvim-lsp"
     use "saadparwaiz1/cmp_luasnip"
     use "L3MON4D3/LuaSnip"
-    use {
-      "zbirenbaum/copilot-cmp",
-      module = "copilot_cmp",
-    }
-
-    -- GitHub Copilot
-    use {
-      "zbirenbaum/copilot.lua",
-      event = { "VimEnter" },
-      config = function()
-        vim.defer_fn(function()
-          require("copilot").setup()
-        end, 100)
-      end,
-    }
 
     -- Emacs-style dashboard
     use "glepnir/dashboard-nvim"
@@ -234,6 +220,7 @@ return require("packer").startup(
 
     -- LISPs
     use "Olical/conjure"
+    use "PaterJason/cmp-conjure"
     use {
       "eraserhd/parinfer-rust",
       run = "cargo build --release"
@@ -253,5 +240,7 @@ return require("packer").startup(
         vim.api.nvim_set_option("conceallevel", 1)
       end
     }
+
+    use "lervag/vimtex"
   end
 )

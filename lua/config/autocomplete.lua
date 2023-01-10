@@ -1,5 +1,5 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 local lspkind = require("lspkind")
@@ -12,11 +12,6 @@ cmp.setup {
   },
   formatting = {
     format = function(entry, vim_item)
-      if entry.source.name == "copilot" then
-        vim_item.kind = "[] Copilot"
-        vim_item.kind_hl_group = "CmpItemKindCopilot"
-        return vim_item
-      end
       return lspkind.cmp_format({ mode = "symbol", maxwidth = 50 })(entry, vim_item)
     end
   },
@@ -48,11 +43,8 @@ cmp.setup {
     end, { 'i', 's' }),
   }),
   sources = {
-    { name = "copilot", group_index = 2 },
     { name = 'nvim_lsp', group_index = 2 },
     { name = 'luasnip', group_index = 2 },
-    { name = 'orgmode', group_index = 2 },
+    { name = 'conjure', group_index = 2 },
   },
 }
-
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
