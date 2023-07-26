@@ -29,7 +29,7 @@ opt_local.spell = false
 opt.spelllang = "en_us"
 
 -- Auto format on save
-cmd([[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]])
+cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
 -- Automatic commenting is annoying
 cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
@@ -126,10 +126,6 @@ opt.encoding = "utf-8"
 
 -- Set a bunch of stuff
 opt.hidden = true
-opt.printfont = ":h10"
-opt.printencoding = "utf-8"
-opt.printoptions = "paper:letter"
-opt.signcolumn = "no"
 
 -- Backups and Undos
 opt.backup = true

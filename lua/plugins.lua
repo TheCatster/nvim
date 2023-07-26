@@ -140,7 +140,8 @@ return require("packer").startup(
     }
     use {
       "nvim-telescope/telescope-fzf-native.nvim",
-      run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+      run =
+      "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
     }
     use "nvim-telescope/telescope-media-files.nvim"
     use "nvim-telescope/telescope-project.nvim"
@@ -178,14 +179,6 @@ return require("packer").startup(
     -- DAP (Debugger) Support
     use "mfussenegger/nvim-dap"
 
-    -- Alternative to Emacs Everywhere (and cleaner imho)
-    use {
-      "glacambre/firenvim",
-      run = function()
-        vim.fn["firenvim#install"](0)
-      end
-    }
-
     -- See colours, fast
     use { "RRethy/vim-hexokinase", run = "make hexokinase" }
 
@@ -197,7 +190,6 @@ return require("packer").startup(
     use "kevinoid/vim-jsonc"
     use "cespare/vim-toml"
     use "stephpy/vim-yaml"
-    use { "iamcco/markdown-preview.nvim", run = "cd app && yarn install", cmd = "MarkdownPreview" }
     use {
       "nvim-orgmode/orgmode",
       config = function()

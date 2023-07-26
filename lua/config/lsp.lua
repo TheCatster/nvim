@@ -1,11 +1,5 @@
 require('lsp-setup').setup({
   default_mappings = true,
-  -- Global on_attach
-  on_attach = function(client, bufnr)
-      -- Support custom the on_attach function for global
-      -- Formatting on save as default
-      require('lsp-setup.utils').format_on_save(client)
-  end,
   -- Global capabilities
   capabilities = vim.lsp.protocol.make_client_capabilities(),
   -- Configuration of LSP servers
@@ -25,25 +19,24 @@ require('lsp-setup').setup({
     tsserver = {},
     julials = {},
     texlab = {},
-    sumneko_lua = {},
+    lua_ls = {},
     marksman = {},
-    pylsp = {},
+    pyright = {},
+    ruff_lsp = {},
     sqlls = {},
     lemminx = {},
     yamlls = {},
     zls = {},
     taplo = {},
     tailwindcss = {},
-    rust_analyzer = require('lsp-setup.rust-tools').setup({
-      server = {
-        settings = {
-          ['rust-analyzer'] = {
-            cargo = {
-              loadOutDirsFromCheck = true,
-            },
-            procMacro = {
-              enable = true,
-            },
+    rust_analyzer = require('lspconfig').rust_analyzer.setup({
+      settings = {
+        ['rust-analyzer'] = {
+          cargo = {
+            loadOutDirsFromCheck = true,
+          },
+          procMacro = {
+            enable = true,
           },
         },
       },

@@ -1,15 +1,14 @@
 ---@diagnostic disable: undefined-global
-require("impatient")
-
 -- Leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Basic Settings
-require("settings")
-
 -- Plugins
 require("plugins")
+-- require("impatient")
+
+-- Basic Settings
+require("settings")
 
 -- LSP
 require("config.lsp")
