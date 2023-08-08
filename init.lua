@@ -1,31 +1,27 @@
----@diagnostic disable: undefined-global
--- Leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Plugins
-require("plugins")
--- require("impatient")
+-- Install package manager
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Basic Settings
-require("settings")
+-- Source packages
+require("lazy").setup("plugins", {
+	install = {
+		missing = true,
+		colorscheme = { "catppuccin" },
+	},
+})
 
--- LSP
-require("config.lsp")
-
--- Keymappings
-require("keymappings")
-
--- Config
-require("config.lualine")
-require("config.julia")
-require("config.treesitter")
-require("config.julia")
-require("config.rust")
-require("config.hy")
-require("config.go")
-require("config.js")
-require("config.arduino")
-require("config.dashboard")
-require("config.autocomplete")
-require("config.luasnip")
+-- Source personal config
+require("thecatster")
