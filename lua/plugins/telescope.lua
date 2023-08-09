@@ -7,6 +7,7 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
+        { "nvim-tree/nvim-web-devicons" },
 	},
 	keys = {
 		{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
