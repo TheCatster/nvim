@@ -7,12 +7,14 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
-        { "nvim-tree/nvim-web-devicons" },
+		{ "nvim-tree/nvim-web-devicons" },
 	},
 	keys = {
 		{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
 		{ "<leader>fs", "<cmd>Telescope live_grep<CR>", desc = "Find a string" },
 		{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Find buffers" },
+		{ "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Find projects" },
+		{ "<leader>fc", "<cmd>Telescope neoclip<CR>", desc = "Find clipboard" },
 		{ "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help" },
 		{ "<leader>fk", "<cmd>Telescope keymaps<CR>", desc = "Find keymaps" },
 	},
@@ -34,5 +36,7 @@ return {
 	},
 	config = function()
 		require("telescope").load_extension("fzf")
+		require("telescope").load_extension("projects")
+		require("telescope").load_extension("neoclip")
 	end,
 }

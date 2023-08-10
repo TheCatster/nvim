@@ -4,6 +4,11 @@ return {
 		{ "neovim/nvim-lspconfig" },
 		{ "nvim-lua/plenary.nvim" },
 		{ "mfussenegger/nvim-dap" },
+		{
+			"saecki/crates.nvim",
+			tag = "v0.3.0",
+			opts = {},
+		},
 	},
 	config = function()
 		local rt = require("rust-tools")

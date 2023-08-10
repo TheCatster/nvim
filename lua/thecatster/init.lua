@@ -5,9 +5,6 @@
 -- Save faster
 vim.keymap.set("n", "<leader>w", ":w<CR>", { remap = true })
 
--- Explore faster
-vim.keymap.set("n", "<leader>fe", vim.cmd.Ex)
-
 -- ; is more convenient
 vim.keymap.set("n", ";", ":")
 
@@ -67,6 +64,10 @@ vim.cmd(
 vim.cmd(
 	[[autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=500}]]
 )
+
+-- Disable netrw in favor of nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- System clipboard
 vim.opt.clipboard = vim.opt.clipboard + "unnamedplus"
