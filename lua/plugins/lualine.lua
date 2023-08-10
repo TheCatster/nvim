@@ -2,7 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
 	opts = {
-		winbar = {
+		sections = {
 			lualine_c = {
 				{
 					"navic",
