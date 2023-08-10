@@ -3,17 +3,33 @@ return {
 	branch = "v2.x",
 	lazy = false,
 	dependencies = {
+		-- Misc
+		{ "nvim-treesitter/nvim-treesitter" },
+		{ "nvim-tree/nvim-web-devicons" },
+
 		-- LSP Support
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
 		{ "folke/trouble.nvim" },
+		{
+			"ray-x/lsp_signature.nvim",
+			event = "VeryLazy",
+			opts = {},
+		},
+		{ "nvimdev/lspsaga.nvim", opts = {} },
 
 		-- Autocompletion
 		{ "hrsh7th/nvim-cmp" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "L3MON4D3/LuaSnip" },
 		{ "folke/neodev.nvim" },
+		{ "hrsh7th/cmp-path" },
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-nvim-lua" },
+		{ "hrsh7th/cmp-emoji" },
+		{ "hrsh7th/cmp-cmdline" },
+		{ "windwp/nvim-autopairs", lazy = false, event = "InsertEnter", opts = {} },
 	},
 	keys = {
 		{ "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" },
@@ -30,6 +46,7 @@ return {
 			"docker_compose_language_service",
 			"dockerls",
 			"html",
+			"jsonls",
 			"julials",
 			"lua_ls",
 			"pyright",
@@ -88,6 +105,39 @@ return {
 		end)
 
 		lsp.setup()
+
+		local cmp = require("cmp")
+		local lsp = require("lsp-zero")
+		local cmp_action = require("lsp-zero").cmp_action()
+
+		local cmp_mappings = lsp.defaults.cmp_mappings({
+			["<Tab>"] = cmp_action.luasnip_supertab(),
+			["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+		})
+
+		-- If you want insert `(` after select function or method item
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+		lsp.setup_nvim_cmp({
+			mapping = cmp_mappings,
+		})
+
+		cmp.setup({
+			sources = {
+				{ name = "nvim_lsp", group_index = 2 },
+				{ name = "path", group_index = 2 },
+				{ name = "luasnip", group_index = 2 },
+			},
+			mapping = {
+				["<CR>"] = cmp.mapping.confirm({
+					-- documentation says this is important.
+					-- I don't know why.
+					behavior = cmp.ConfirmBehavior.Replace,
+					select = false,
+				}),
+			},
+		})
 
 		vim.diagnostic.config({
 			virtual_text = true,
