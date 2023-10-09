@@ -1,8 +1,9 @@
 return {
-	"sudormrfbin/cheatsheet.nvim",
-	dependencies = {
-		{ "nvim-telescope/telescope.nvim" },
-		{ "nvim-lua/popup.nvim" },
-		{ "nvim-lua/plenary.nvim" },
-	},
+    "sudormrfbin/cheatsheet.nvim",
+    opts = {},
+    dependencies = {
+        { "nvim-telescope/telescope.nvim" },
+        { "nvim-lua/popup.nvim" },
+        { "nvim-lua/plenary.nvim" },
+    },
 }

@@ -3,10 +3,7 @@
 ---------------
 
 -- Save faster
-vim.keymap.set("n", "<leader>w", ":w<CR>", { remap = true })
-
--- ; is more convenient
-vim.keymap.set("n", ";", ":")
+vim.keymap.set("n", "<leader>w", ":w<CR>", { remap = true, desc = "Save Buffer" })
 
 -----------
 --- Set ---
@@ -45,7 +42,7 @@ vim.opt.updatetime = 50
 
 -- Replace grep with ripgrep
 if vim.fn.executable("rg") == 1 then
-	vim.opt.grepprg = "rg --vimgrep"
+    vim.opt.grepprg = "rg --vimgrep"
 end
 
 -- Automatic commenting is annoying
@@ -57,17 +54,13 @@ vim.cmd([[autocmd BufWritepre * %s/\n\+\%$//e]])
 
 -- Jump to previous editing position
 vim.cmd(
-	[[au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
+    [[au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
 )
 
 -- Highlight yanked
 vim.cmd(
-	[[autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=500}]]
+    [[autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=500}]]
 )
-
--- Disable netrw in favor of nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 -- System clipboard
 vim.opt.clipboard = vim.opt.clipboard + "unnamedplus"

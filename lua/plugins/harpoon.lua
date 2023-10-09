@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	opts = {},
 	keys = {
 		{ "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", desc = "Add File" },
 		{ "<leader>hr", "<cmd>lua require('harpoon.mark').rm_file()<cr>", desc = "Remove File" },
