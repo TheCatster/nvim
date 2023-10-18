@@ -20,6 +20,7 @@ return {
                 "javascript",
                 "typescript",
                 "tsx",
+                "slint",
                 "html",
                 "css",
                 "json",

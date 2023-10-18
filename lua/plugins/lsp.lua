@@ -161,6 +161,7 @@ lsp_zero.set_server_config({
                 "lua_ls",
                 "pyright",
                 "rust_analyzer",
+                "slint",
                 "svls",
                 "texlab",
                 "tsserver",
