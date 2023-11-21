@@ -1,6 +1,7 @@
 return {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
+    lazy = false,
     dependencies = {
         -- LSP Support
         { "neovim/nvim-lspconfig" },
@@ -124,28 +125,17 @@ return {
             end
         })
 
-        local lsp_zero = require("lsp-zero")
-
         vim.diagnostic.config({
             virtual_text = true,
         })
 
-        lsp_zero.on_attach(function(_, bufnr)
-            -- see :help lsp-zero-keybindings
-            -- to learn the available actions
-            lsp_zero.default_keymaps({ buffer = bufnr })
-        end)
+        local lsp_zero = require('lsp-zero')
 
-lsp_zero.set_server_config({
-  capabilities = {
-    textDocument = {
-      foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true
-      }
-    }
-  }
-})
+        lsp_zero.on_attach(function(client, bufnr)
+          -- see :help lsp-zero-keybindings
+          -- to learn the available actions
+          lsp_zero.default_keymaps({buffer = bufnr})
+        end)
 
         require("mason").setup({})
         require("mason-lspconfig").setup({
@@ -161,7 +151,6 @@ lsp_zero.set_server_config({
                 "lua_ls",
                 "pyright",
                 "rust_analyzer",
-                "slint",
                 "svls",
                 "texlab",
                 "tsserver",
@@ -174,18 +163,6 @@ lsp_zero.set_server_config({
                     require("lspconfig").lua_ls.setup(lua_opts)
                 end,
             },
-        })
-
-        local cmp = require("cmp")
-        local cmp_format = lsp_zero.cmp_format()
-
-        cmp.setup({
-            formatting = cmp_format,
-            mapping = cmp.mapping.preset.insert({
-                -- scroll up and down the documentation window
-                ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-d>"] = cmp.mapping.scroll_docs(4),
-            }),
         })
     end,
 }

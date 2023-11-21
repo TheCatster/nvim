@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    lazy = false,
     dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },
         { "L3MON4D3/LuaSnip" },
@@ -34,14 +35,6 @@ return {
                 { name = "path", group_index = 2 },
                 { name = "luasnip", group_index = 2 },
                 { name = "crates", group_index = 2 },
-            },
-            mapping = {
-                ["<CR>"] = require("cmp").mapping.confirm({
-                    -- documentation says this is important.
-                    -- I don't know why.
-                    behavior = require("cmp").ConfirmBehavior.Replace,
-                    select = false,
-                }),
             },
         })
 
