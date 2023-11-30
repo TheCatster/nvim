@@ -18,6 +18,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Source personal config
+require("thecatster")
+
 -- Source packages
 require("lazy").setup("plugins", {
     install = {
@@ -25,6 +28,3 @@ require("lazy").setup("plugins", {
         colorscheme = { "catppuccin" },
     },
 })
-
--- Source personal config
-require("thecatster")

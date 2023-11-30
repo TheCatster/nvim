@@ -10,6 +10,7 @@ vim.keymap.set("n", "<leader>w", ":w<CR>", { remap = true, desc = "Save Buffer" 
 -----------
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.g.lsp_zero_extend_lspconfig = 0
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
