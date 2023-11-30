@@ -1,5 +1,6 @@
 return {
 	"simrat39/rust-tools.nvim",
+    lazy = true,
 	dependencies = {
 		{ "neovim/nvim-lspconfig" },
 		{ "nvim-lua/plenary.nvim" },

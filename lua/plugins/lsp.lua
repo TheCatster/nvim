@@ -13,14 +13,14 @@ return {
             event = "VeryLazy",
             opts = {},
         },
-        { "nvimdev/lspsaga.nvim", opts = {} },
+        { "nvimdev/lspsaga.nvim",           opts = {} },
         { "nvim-treesitter/nvim-treesitter" },
         { "nvim-tree/nvim-web-devicons" },
         {
             "AckslD/nvim-FeMaco.lua",
             opts = {},
         },
-        {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
+        { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
 
         -- Autocompletion
         { "hrsh7th/nvim-cmp" },
@@ -28,7 +28,7 @@ return {
         { "L3MON4D3/LuaSnip" },
     },
     keys = {
-        { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
+        { "<leader>cm", "<cmd>Mason<cr>",  desc = "Mason" },
         { "<leader>cb", "<CMD>FeMaco<CR>", desc = "Evaluate Codeblock" },
         {
             "gd",
@@ -110,18 +110,18 @@ return {
         },
     },
     config = function()
-        vim.o.foldcolumn = '1'
+        vim.o.foldcolumn = "1"
         vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
         vim.o.foldlevelstart = 99
         vim.o.foldenable = true
 
         -- Using ufo provider need remap `zR` and `zM`.
-        vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-        vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+        vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+        vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
-        require('ufo').setup({
+        require("ufo").setup({
             provider_selector = function(_, _, _)
-                return {'treesitter', 'indent'}
+                return { "treesitter", "indent" }
             end
         })
 
@@ -129,12 +129,12 @@ return {
             virtual_text = true,
         })
 
-        local lsp_zero = require('lsp-zero')
+        local lsp_zero = require("lsp-zero")
+        lsp_zero.extend_lspconfig()
 
         lsp_zero.on_attach(function(client, bufnr)
-          -- see :help lsp-zero-keybindings
-          -- to learn the available actions
-          lsp_zero.default_keymaps({buffer = bufnr})
+            lsp_zero.default_keymaps({ buffer = bufnr })
+            lsp_zero.buffer_autoformat()
         end)
 
         require("mason").setup({})
@@ -168,11 +168,11 @@ return {
         -- clangd fix
         local cmp_nvim_lsp = require "cmp_nvim_lsp"
         require("lspconfig").clangd.setup {
-          capabilities = cmp_nvim_lsp.default_capabilities(),
-          cmd = {
-            "clangd",
-            "--offset-encoding=utf-16",
-          },
+            capabilities = cmp_nvim_lsp.default_capabilities(),
+            cmd = {
+                "clangd",
+                "--offset-encoding=utf-16",
+            },
         }
     end,
 }
