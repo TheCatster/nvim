@@ -11,22 +11,23 @@ return {
     config = function()
         local wk = require("which-key")
 
-        wk.register({
-            f = {
-                name = "find",
+        wk.add({
+            {
+                "<leader>f",
+                group = "find",
             },
-            c = {
-                name = "lsp",
+            {
+                "<leader>c",
+                group = "lsp",
             },
-            g = {
-                name = "git",
+            {
+                "<leader>g",
+                group = "git",
             },
-            h = {
-                name = "harpoon",
-            },
-            o = {
-                name = "obsidian",
-            },
-        }, { prefix = "<leader>" })
+            {
+                "<leader>h",
+                group = "harpoon",
+            }
+        })
     end,
 }
