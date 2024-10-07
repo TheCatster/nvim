@@ -3,10 +3,7 @@ return {
     cmd = "Telescope",
     dependencies = {
         { "nvim-lua/plenary.nvim" },
-        {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "make",
-        },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release" },
         { "nvim-tree/nvim-web-devicons" },
         { "nvim-telescope/telescope-file-browser.nvim" },
         { "nvim-telescope/telescope-dap.nvim" },

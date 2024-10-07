@@ -153,7 +153,6 @@ return {
                 "rust_analyzer",
                 "svls",
                 "texlab",
-                "tsserver",
                 "zls",
             },
             handlers = {
