@@ -10,18 +10,9 @@ return {
         { "hrsh7th/cmp-emoji" },
         { "hrsh7th/cmp-cmdline" },
         { "windwp/nvim-autopairs", opts = {} },
-        { "zbirenbaum/copilot.lua" },
-        { "zbirenbaum/copilot-cmp" },
     },
     config = function()
         local cmp = require("cmp")
-
-        require("copilot").setup({
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-        })
-
-        require("copilot_cmp").setup()
 
         cmp.setup({
             snippet = {
@@ -30,7 +21,6 @@ return {
                 end,
             },
             sources = {
-                { name = "copilot", group_index = 2 },
                 { name = "nvim_lsp", group_index = 2 },
                 { name = "path", group_index = 2 },
                 { name = "luasnip", group_index = 2 },

@@ -1,10 +1,10 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
-        local configs = require("nvim-treesitter.configs")
-
-        configs.setup({
+        require("nvim-treesitter").setup({
+            ignore_install = { "latex" },
             ensure_installed = {
                 "lua",
                 "rust",
@@ -14,7 +14,6 @@ return {
                 "vim",
                 "markdown",
                 "markdown_inline",
-                "latex",
                 "bash",
                 "cpp",
                 "javascript",

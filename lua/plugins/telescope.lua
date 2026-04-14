@@ -20,7 +20,7 @@ return {
         { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
         { "<leader>fs", "<cmd>Telescope live_grep<CR>", desc = "Find String" },
         { "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Find Buffers" },
-        { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Find Projects" },
+        --{ "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Find Projects" },
         { "<leader>fc", "<cmd>Telescope neoclip<CR>", desc = "Find Clipboard" },
         { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help" },
         { "<leader>fk", "<cmd>Telescope keymaps<CR>", desc = "Find Keymaps" },
@@ -48,7 +48,7 @@ return {
     config = function()
         require("telescope").load_extension("fzf")
         require("telescope").load_extension("file_browser")
-        require("telescope").load_extension("projects")
+        --require("telescope").load_extension("projects")
         require("telescope").load_extension("neoclip")
         require("telescope").load_extension("dap")
         require("telescope").load_extension("frecency")
